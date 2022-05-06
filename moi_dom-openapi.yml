@@ -1,0 +1,66 @@
+openapi: 3.0.0
+servers:
+  - url: //petstore.swagger.io/v2
+    description: Default server
+  - url: //petstore.swagger.io/sandbox
+info:
+  description: |
+    Документация описывает API методы сервиса Мой Дом и предназначена для разработчиков, задачей которых является интеграция Мой Дом с другими системами и сервисами.
+  version: 1.0.0
+  title:  «Мой Дом» API
+  contact:
+    name: API Support
+    email: tenctvi@gmail.com
+    url: https://github.com/ppikamon/moi_dom.testAPI-description/blob/main/3790460.png?raw=true
+  x-logo:
+    url: 'https://платимдома.рф/img/logo_t.svg'
+    altText: logo
+    tags:
+    - name: Действия
+    description: Методы передачи данных пользователя в систему «Мой Дом» 
+paths:
+  /transmission/:
+    post:
+      summary:  Передача показаний прибора учета в расчетную систему
+      tags: 
+      - Действия
+      description: Метод передает да
+      operationId: addPet
+      responses:
+        '405':
+          description: Invalid input
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+      x-codeSamples:
+        - lang: 'C#'
+          source: |
+            PetStore.v1.Pet pet = new PetStore.v1.Pet();
+            pet.setApiKey("your api key");
+            pet.petType = PetStore.v1.Pet.TYPE_DOG;
+            pet.name = "Rex";
+            // set other fields
+            PetStoreResponse response = pet.create();
+            if (response.statusCode == HttpStatusCode.Created)
+            {
+              // Successfully created
+            }
+            else
+            {
+              // Something wrong -- check response for errors
+              Console.WriteLine(response.getRawResponse());
+            }
+        - lang: PHP
+          source: |
+            $form = new \PetStore\Entities\Pet();
+            $form->setPetType("Dog");
+            $form->setName("Rex");
+            // set other fields
+            try {
+                $pet = $client->pets()->create($form);
+            } catch (UnprocessableEntityException $e) {
+                var_dump($e->getErrors());
+            }
+      requestBody:
+        $ref: '#/components/requestBodies/Pet'
