@@ -20,7 +20,7 @@ and extract (month FROM period) = 2;
 select a.address, sum(amount) from accounts as a
 join trans as t on t.accountnum = a.accountnum
 where a.status = 'Открыт' 
-group by a.address
+group by a.address;
 
 --6
 select distinct address from accounts 
