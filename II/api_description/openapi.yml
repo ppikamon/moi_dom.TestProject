@@ -1,0 +1,67 @@
+openapi: 3.0.0
+servers:
+  - url: http://domain.ru
+    description: Default server
+info:
+  description: |
+    Документация описывает API методы сервиса «Мой Дом» и предназначена для разработчиков, задачей которых является интеграция «Мой Дом» с другими системами и сервисами.
+  version: 1.0.0
+  title: «Мой Дом» API
+  contact:
+    name: API Поддержка
+    email: support@domain.ru
+    url: https://github.com/ppikamon/moi_dom.testAPI-description
+  x-logo:
+    url: "https://github.com/ppikamon/moi_dom.TestProject/blob/main/II/demo/logo.png?raw=true"
+    altText: logo
+    tags:
+      - name: Действия в аккаунте
+    description: Методы передачи данных пользователя в систему «Мой Дом»
+components:
+  parameters:
+    apiKey:
+      in: header
+      name: apiKey
+      required: true
+      description: Ключ для доступа к API
+      schema:
+        type: string
+paths:
+  /accountActions/readings/:
+    post:
+      summary: Передача показаний прибора учета в расчетную систему
+      description: Позволяет передать показания прибора учета из аккаунта пользователя во внутреннюю расчетную систему.
+      tags:
+        - Действия в аккаунте
+      parameters:
+        - $ref: "#/components/parameters/apiKey"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - accountNum
+                - meterId
+                - readings
+              properties:
+                accountNum:
+                  description: Номер личевого счета
+                  type: integer
+                  example: 989307856
+                meterId:
+                  description: Идентификатор прибора учета
+                  type: integer
+                  example: 2948242
+                readings:
+                  description: Показания прибора учета
+                  type: float
+                  example: 342.142
+      responses:
+        "201":
+          description: Запрос отработал без ошибок. Показания были добавлены
+        "400":
+          description: Ошибка запроса
+        "500":
+          description: Что-то пошло не так. Обратитесь за помощью в поддержку
