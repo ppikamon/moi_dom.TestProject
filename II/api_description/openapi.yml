@@ -10,9 +10,9 @@ info:
   contact:
     name: API Поддержка
     email: support@domain.ru
-    url: https://github.com/ppikamon/moi_dom.testAPI-description
+    url: http://domain.ru
   x-logo:
-    url: "https://github.com/ppikamon/moi_dom.TestProject/blob/main/II/demo/logo.png?raw=true"
+    url: "https://github.com/ppikamon/moi_dom.TestProject/blob/main/II/api_description/logo.png?raw=true"
     altText: logo
     tags:
       - name: Действия в аккаунте
@@ -60,8 +60,37 @@ paths:
                   example: 342.142
       responses:
         "201":
+          content:
+            application/json:
+              example:
+                 "Success"        
           description: Запрос отработал без ошибок. Показания были добавлены
         "400":
           description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: 
+                    description: Текст ответа
+                    type: string
+                  requestId:
+                    description: ID запроса
+                    type: string
+                example:
+                  message: Bad Request
+                  requestId: 6a8c82f5-73b3-4c6a-8256-332ed51b6ba4
         "500":
           description: Что-то пошло не так. Обратитесь за помощью в поддержку
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requestID:
+                    description: id запроса
+                    type: string
+                example:
+                  requestId: 6a8c82f5-73b3-4c6a-8256-332ed51b6ba4
+
