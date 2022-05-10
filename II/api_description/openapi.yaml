@@ -56,7 +56,7 @@ paths:
                   example: 2948242
                 readings:
                   description: Показания прибора учета
-                  type: float
+                  type: integer
                   example: 342.142
       responses:
         "201":
