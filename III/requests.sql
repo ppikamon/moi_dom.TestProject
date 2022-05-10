@@ -27,6 +27,3 @@ select distinct address from accounts
 where accountnum not in (
 select accountnum from trans 
 where period between '2021-01-01 00:00:00.000' and '2021-01-31 23:59:59.999');
-
-
-
