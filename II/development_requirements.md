@@ -43,9 +43,9 @@
 ##### Поля тела запроса
 
 > `accountNum` (integer);
-
+>
 > `meterId` (integer); 
-
+>
 > `readings` (float).
 
 ##### Пример тела запроса в JSON:
