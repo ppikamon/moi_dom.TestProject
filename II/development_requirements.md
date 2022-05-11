@@ -57,6 +57,6 @@
 
 ### Диаграмма последовательности 
 
-![sequence_diagram](https://github.com/ppikamon/moi_dom.TestProject/blob/main/II/sequence_diagram.png?raw=true)
+![sequence_diagram](https://github.com/ppikamon/moi_dom.TestProject/blob/main/stockroom/sequence_diagram.png?raw=true)
 
 
