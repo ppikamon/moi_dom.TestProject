@@ -12,7 +12,7 @@ info:
     email: support@domain.ru
     url: http://domain.ru
   x-logo:
-    url: "https://github.com/ppikamon/moi_dom.TestProject/blob/main/II/api_description/logo.png?raw=true"
+    url: "https://github.com/ppikamon/moi_dom.TestProject/blob/main/stockroom/logo.png?raw=true"
     altText: logo
     tags:
       - name: Действия в аккаунте
